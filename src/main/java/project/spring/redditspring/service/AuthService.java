@@ -11,7 +11,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import project.spring.redditspring.config.AppConfig;
 import project.spring.redditspring.dto.AuthenticationResponse;
 import project.spring.redditspring.dto.LoginRequest;
 import project.spring.redditspring.dto.RefreshTokenRequest;
@@ -39,7 +38,6 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
     private final JwtProvider jwtProvider;
     private final RefreshTokenService refreshTokenService;
-    private final AppConfig appConfig;
 
     @Transactional
     public void singup(RegisterRequest registerRequest) {
@@ -56,7 +54,7 @@ public class AuthService {
         mailService.sendMail(new NotificationEmail("Please Active Your Account",
                 user.getEmail(), "Thank you for signing up to Spring Reddit "
                 + "Please click to the below url to activate your account : "
-                + appConfig.getAppUrl() + "/api/auth/account-verification/" + token));
+                + "http://localhost:8080/api/auth/account-verification/" + token));
     }
 
     @Transactional(readOnly = true)

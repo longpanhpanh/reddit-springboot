@@ -14,7 +14,6 @@ import java.time.Instant;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "reddit_user")
 public class User {
 
     @Id

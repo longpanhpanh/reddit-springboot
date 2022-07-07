@@ -25,6 +25,7 @@ public class Subreddit {
     private String name;
 
     @NotBlank(message = "Description is required")
+    @Lob
     private String description;
 
     @OneToMany(fetch = FetchType.LAZY)
